@@ -8,7 +8,10 @@ export const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<MainPage page={page} setPage={setPage} />} />
+        <Route
+          path="/:id"
+          element={<MainPage page={page} setPage={setPage} />}
+        />
       </Routes>
     </BrowserRouter>
   );

@@ -1,7 +1,8 @@
 import * as React from "react";
+import { useSelector } from "react-redux";
 import { PostsPagination } from "../components/PostsPagination";
 import { PostsTable } from "../components/PostsTable";
-import { storeContext } from "../Context/StoreContext";
+import { useActions } from "../hooks/useActions";
 
 const mainPageStyles = {
   display: "flex",
@@ -11,20 +12,17 @@ const mainPageStyles = {
 };
 
 const MainPage = ({ page, setPage }) => {
-  const { posts, fetchPosts, total } = React.useContext(storeContext);
-  //   const [page, setPage] = React.useState(1);
+  const { posts } = useSelector((state) => state);
+  const { fetchPosts } = useActions();
+
   React.useEffect(() => {
-    fetchPosts(page - 1);
-  }, [page]);
+    fetchPosts();
+  }, []);
 
   return (
     <div style={mainPageStyles}>
-      <PostsPagination
-        page={page}
-        setPage={setPage}
-        count={Math.ceil(total / 10)}
-      />
-      <PostsTable posts={posts} />
+      <PostsPagination page={page} setPage={setPage} />
+      <PostsTable posts={posts} page={page} />
     </div>
   );
 };

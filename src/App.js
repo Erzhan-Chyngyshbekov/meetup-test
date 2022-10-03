@@ -1,12 +1,12 @@
-import StoreContextProvider from "./Context/StoreContext";
+import { Provider } from "react-redux";
 import { Router } from "./Router";
-import MainPage from "./Views/MainPage";
+import store from "./store";
 
 function App() {
   return (
-    <StoreContextProvider>
+    <Provider store={store}>
       <Router />
-    </StoreContextProvider>
+    </Provider>
   );
 }
 
