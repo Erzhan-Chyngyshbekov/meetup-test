@@ -13,9 +13,8 @@ const mainPageStyles = {
 };
 
 const MainPage = () => {
-  const { posts } = useSelector((state) => state);
+  const { posts, total } = useSelector((state) => state);
   const { fetchPosts } = useActions();
-  const [page, setPage] = React.useState(1);
   const { id } = useParams();
 
   React.useEffect(() => {
@@ -24,8 +23,8 @@ const MainPage = () => {
 
   return (
     <div style={mainPageStyles}>
-      <PostsPagination setPage={setPage} page={page} pageId={id} />
-      <PostsTable posts={posts} page={page} pageId={id} />
+      <PostsPagination total={total} pageId={id} />
+      <PostsTable posts={posts} pageId={id} />
     </div>
   );
 };

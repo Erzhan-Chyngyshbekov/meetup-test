@@ -13,6 +13,10 @@ import Paper from "@mui/material/Paper";
 export function PostsTable({ posts, pageId }) {
   const { reversePosts } = useActions();
 
+  const handleReversePosts = () => {
+    reversePosts(posts);
+  };
+
   return (
     <TableContainer component={Paper} className={classes.table}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -21,7 +25,7 @@ export function PostsTable({ posts, pageId }) {
             <TableCell>
               <button
                 className={classes.button}
-                onClick={() => reversePosts(posts)}
+                onClick={() => handleReversePosts()}
               >
                 id
               </button>

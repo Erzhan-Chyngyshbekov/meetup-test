@@ -7,8 +7,9 @@ export const fetchPosts = () => {
   return async (dispatch) => {
     const response = await axios.get(URL);
     const posts = response.data;
+    const total = posts.length;
 
-    dispatch({ type: SET_POSTS, payload: posts });
+    dispatch({ type: SET_POSTS, payload: { posts, total } });
   };
 };
 

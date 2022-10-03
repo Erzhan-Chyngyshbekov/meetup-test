@@ -2,6 +2,7 @@ import { SET_POSTS, REVERSE_POSTS } from "./actionTypes";
 
 const INIT_STATE = {
   posts: [],
+  total: 0,
 };
 
 export const reducer = (state = INIT_STATE, action) => {
@@ -9,7 +10,8 @@ export const reducer = (state = INIT_STATE, action) => {
     case SET_POSTS:
       return {
         ...state,
-        posts: action.payload,
+        posts: action.payload.posts,
+        total: action.payload.total,
       };
     case REVERSE_POSTS:
       return {
