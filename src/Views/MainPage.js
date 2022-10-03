@@ -23,7 +23,7 @@ const MainPage = () => {
 
   return (
     <div style={mainPageStyles}>
-      <PostsPagination total={total} pageId={id} />
+      <PostsPagination total={Math.ceil(total / 10)} pageId={id} />
       <PostsTable posts={posts} pageId={id} />
     </div>
   );
