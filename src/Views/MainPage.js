@@ -1,5 +1,6 @@
 import * as React from "react";
 import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import { PostsPagination } from "../components/PostsPagination";
 import { PostsTable } from "../components/PostsTable";
 import { useActions } from "../hooks/useActions";
@@ -11,9 +12,11 @@ const mainPageStyles = {
   padding: "20px",
 };
 
-const MainPage = ({ page, setPage }) => {
+const MainPage = () => {
   const { posts } = useSelector((state) => state);
   const { fetchPosts } = useActions();
+  const [page, setPage] = React.useState(1);
+  const { id } = useParams();
 
   React.useEffect(() => {
     fetchPosts();
@@ -21,8 +24,8 @@ const MainPage = ({ page, setPage }) => {
 
   return (
     <div style={mainPageStyles}>
-      <PostsPagination page={page} setPage={setPage} />
-      <PostsTable posts={posts} page={page} />
+      <PostsPagination setPage={setPage} page={page} pageId={id} />
+      <PostsTable posts={posts} page={page} pageId={id} />
     </div>
   );
 };

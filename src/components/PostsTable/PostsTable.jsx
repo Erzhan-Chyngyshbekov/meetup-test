@@ -10,7 +10,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 
-export function PostsTable({ posts, page }) {
+export function PostsTable({ posts, pageId }) {
   const { reversePosts } = useActions();
 
   return (
@@ -35,7 +35,7 @@ export function PostsTable({ posts, page }) {
         </TableHead>
         <TableBody>
           {posts.map((post) =>
-            post.id <= page * 10 && post.id > page * 10 - 10 ? (
+            post.id <= pageId * 10 && post.id > pageId * 10 - 10 ? (
               <TableRow
                 key={post.id}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
