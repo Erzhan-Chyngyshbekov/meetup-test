@@ -6,7 +6,6 @@ export const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
-        {/* <Route path="/" element={<MainPage />} /> */}
         <Route path="/:id" element={<MainPage />} />
       </Routes>
     </BrowserRouter>

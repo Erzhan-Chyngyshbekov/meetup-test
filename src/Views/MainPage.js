@@ -1,3 +1,4 @@
+import { CircularProgress } from "@mui/material";
 import * as React from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -12,6 +13,12 @@ const mainPageStyles = {
   padding: "20px",
 };
 
+const loaderStyles = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+};
+
 const MainPage = () => {
   const { posts, total } = useSelector((state) => state);
   const { fetchPosts } = useActions();
@@ -21,11 +28,13 @@ const MainPage = () => {
     fetchPosts();
   }, []);
 
-  return (
+  return posts.length ? (
     <div style={mainPageStyles}>
       <PostsPagination total={Math.ceil(total / 10)} pageId={id} />
       <PostsTable posts={posts} pageId={id} />
     </div>
+  ) : (
+    <CircularProgress style={loaderStyles} />
   );
 };
 
