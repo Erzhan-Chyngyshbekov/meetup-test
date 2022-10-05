@@ -17,8 +17,6 @@ export function PostsTable({ posts, pageId }) {
     reversePosts(posts);
   };
 
-  console.log(pageId);
-
   return (
     <TableContainer component={Paper} className={classes.table}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
