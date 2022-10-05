@@ -13,7 +13,7 @@ export const PostsPagination = ({ pageId, total }) => {
         history(`/${_page}`);
       }}
       count={total}
-      page={parseInt(pageId)}
+      page={pageId}
     />
   );
 };

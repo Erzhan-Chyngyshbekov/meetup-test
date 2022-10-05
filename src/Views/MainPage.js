@@ -24,14 +24,18 @@ const MainPage = () => {
   const { fetchPosts } = useActions();
   const { id } = useParams();
 
+  const pageId = (id) => {
+    return !id ? 1 : parseInt(id);
+  };
+
   React.useEffect(() => {
     fetchPosts();
   }, []);
 
   return posts.length ? (
     <div style={mainPageStyles}>
-      <PostsTable posts={posts} pageId={id} />
-      <PostsPagination total={Math.ceil(total / 10)} pageId={id} />
+      <PostsTable posts={posts} pageId={pageId(id)} />
+      <PostsPagination total={Math.ceil(total / 10)} pageId={pageId(id)} />
     </div>
   ) : (
     <CircularProgress style={loaderStyles} />
