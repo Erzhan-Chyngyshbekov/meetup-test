@@ -30,8 +30,8 @@ const MainPage = () => {
 
   return posts.length ? (
     <div style={mainPageStyles}>
-      <PostsPagination total={Math.ceil(total / 10)} pageId={id} />
       <PostsTable posts={posts} pageId={id} />
+      <PostsPagination total={Math.ceil(total / 10)} pageId={id} />
     </div>
   ) : (
     <CircularProgress style={loaderStyles} />

@@ -32,9 +32,7 @@ export function PostsTable({ posts, pageId }) {
             </TableCell>
             <TableCell align="right">userId</TableCell>
             <TableCell align="right">title</TableCell>
-            <TableCell align="right">
-              <button className={classes.button}>body</button>
-            </TableCell>
+            <TableCell align="right">body</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
